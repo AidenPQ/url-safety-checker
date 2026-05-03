@@ -2,7 +2,7 @@
 ## 1. Objectifs
 
 Une application qui permet à son utilisateur:
-	- d'évaluer le niveau de dangerosité d'une URL en passant par score de confiance entre 0 et 1 et un label (safe, suspicious, malicious)
+	- d'évaluer le niveau de dangerosité d'une URL en passant par une distribution de probabilité par classe et un label (benign, defacement, phishing, malware) via un code couleur approprié
 	- d'expliquer ce label et ce score par des features claires (longueur de l'URL, présence de certains caractères...) et l'influence de chacun sur la prédiction
 
 
@@ -12,7 +12,7 @@ Une application qui permet à son utilisateur:
 | Fonctionnalité | Détail |
 |---|---|
 | Saisie d'URL | Champ texte + bouton + touche Entrée |
-| Résultat d'analyse | Label + score de confiance + code couleur |
+| Résultat d'analyse | Label + distribution de probabilité par classe + code couleur |
 | Visualisation features | Graphique en barres horizontal (nom + importance relative) |
 | Historique | 5 entrées max, affiché depuis Redis |
 | Persistance long terme | SQLite — toutes les URLs analysées + label + score |
@@ -65,7 +65,7 @@ Le tableau des technologies est le suivant :
 
 | Critère | Mesure |
 |---|---|
-| Qualité ML classification | Accuracy, Precision, Recall — seuils à définir phase ML |
+| Qualité ML classification | Accuracy, Precision, Recall, AUC, F1 — seuils à définir phase ML |
 | Qualité ML score | Brier Score — seuil à définir phase ML |
 | Performance cache hit | < 0.5s |
 | Performance cache miss | < 5s |
@@ -93,5 +93,5 @@ Le tableau des technologies est le suivant :
      b. L'Api stocke dans SQLite l'URL, le label, le score, FeatureContributions, et date d'analyse.
      c. L'Api stocke dans Redis l'URL, le label, le score, FeatureContributions
 4. L'Api retourne à Web le label, le score, FeatureContributions
-5. Web affiche le label et le score dans un code couleur défini ainsi qu'un graphique à barres horizontales pour présenter les FeatureContributions.
+5. Web affiche le label dans un code couleur défini, la distribution de probabilité par classe ainsi qu'un graphique à barres horizontales pour présenter les FeatureContributions.
 
