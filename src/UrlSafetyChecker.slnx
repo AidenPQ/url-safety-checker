@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="UrlSafetyChecker.Api/UrlSafetyChecker.Api.csproj" />
+  <Project Path="UrlSafetyChecker.Trainer/UrlSafetyChecker.Trainer.csproj" />
+  <Project Path="UrlSafetyChecker.Web/UrlSafetyChecker.Web.csproj" />
+</Solution>

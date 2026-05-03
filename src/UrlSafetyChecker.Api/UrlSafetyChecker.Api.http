@@ -1,0 +1,6 @@
+@UrlSafetyChecker.Api_HostAddress = http://localhost:5215
+
+GET {{UrlSafetyChecker.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
